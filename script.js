@@ -1,6 +1,5 @@
 "use strict";
 
-
 /* 
 ----- Pseudocode -----
 
@@ -23,3 +22,31 @@
 
 
 */
+
+/* ----- Gameboard Object ----- */
+
+const gameboard = (() => {
+  const gameboardArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const p1Boxes = [];
+  const p2Boxes = [];
+
+  const updatePlayerBoxes = () => {
+    for (let i = 0; i < 9; i++) {
+      if (gameboardArray[i] === 1) {
+        if (!p1Boxes.includes(i)) {
+          p1Boxes.push(i);
+        }
+      } else if (gameboardArray[i] === 2) {
+        if (!p2Boxes.includes(1)) {
+          p2Boxes.push(i);
+        }
+      }
+    }
+  };
+
+  return { gameboardArray, p1Boxes, updatePlayerBoxes };
+})();
+
+console.log("Loaded");
+
+gameboard.gameboardArray[4] = 1;
